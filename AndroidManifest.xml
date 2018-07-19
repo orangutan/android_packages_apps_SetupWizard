@@ -140,6 +140,7 @@
             </intent-filter>
         </activity>
 
+	<!--
         <activity android:name=".WifiSetupActivity"
                   android:label="@string/activity_label_empty"
                   android:excludeFromRecents="true"
@@ -152,6 +153,7 @@
                 <category android:name="android.intent.category.DEFAULT" />
             </intent-filter>
         </activity>
+	-->
 
         <activity android:name=".CaptivePortalSetupActivity"
                   android:label="@string/activity_label_empty"
@@ -205,6 +207,7 @@
             </intent-filter>
         </activity>
 
+	<!--
         <activity android:name=".LocationSettingsActivity"
                   android:label="@string/activity_label_empty"
                   android:excludeFromRecents="true"
@@ -217,6 +220,7 @@
                 <category android:name="android.intent.category.DEFAULT" />
             </intent-filter>
         </activity>
+	-->
 
         <activity android:name=".LineageSettingsActivity"
                   android:label="@string/activity_label_empty"
@@ -230,6 +234,7 @@
             </intent-filter>
         </activity>
 
+	<!--
         <activity android:name=".FingerprintActivity"
                   android:label="@string/activity_label_empty"
                   android:excludeFromRecents="true"
@@ -255,6 +260,7 @@
                 <category android:name="android.intent.category.DEFAULT" />
             </intent-filter>
         </activity>
+	-->
 
         <activity android:name=".FinishActivity"
                   android:label="@string/activity_label_empty"
