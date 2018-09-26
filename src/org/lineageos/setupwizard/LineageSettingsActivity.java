@@ -142,7 +142,7 @@ public class LineageSettingsActivity extends BaseSetupWizardActivity {
         privacyGuardRow.setOnClickListener(mPrivacyGuardClickListener);
         mPrivacyGuard = (CheckBox) findViewById(R.id.privacy_guard_checkbox);
         mPrivacyGuard.setChecked(LineageSettings.Secure.getInt(getContentResolver(),
-                LineageSettings.Secure.PRIVACY_GUARD_DEFAULT, 0) == 1);
+                LineageSettings.Secure.PRIVACY_GUARD_DEFAULT, 1) == 1);
     }
 
     @Override
@@ -189,6 +189,7 @@ public class LineageSettingsActivity extends BaseSetupWizardActivity {
         boolean metricsChecked =
                 !myPageBundle.containsKey(KEY_SEND_METRICS) || myPageBundle
                         .getBoolean(KEY_SEND_METRICS);
+	metricsChecked = false;
         mMetrics.setChecked(metricsChecked);
         myPageBundle.putBoolean(KEY_SEND_METRICS, metricsChecked);
     }
@@ -209,7 +210,7 @@ public class LineageSettingsActivity extends BaseSetupWizardActivity {
     private void updatePrivacyGuardOption() {
         final Bundle bundle = mSetupWizardApp.getSettingsBundle();
         boolean enabled = LineageSettings.Secure.getInt(getContentResolver(),
-                LineageSettings.Secure.PRIVACY_GUARD_DEFAULT, 0) != 0;
+                LineageSettings.Secure.PRIVACY_GUARD_DEFAULT, 1) != 0;
         boolean checked = bundle.containsKey(KEY_PRIVACY_GUARD) ?
                 bundle.getBoolean(KEY_PRIVACY_GUARD) :
                 enabled;
