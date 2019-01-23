@@ -1,6 +1,6 @@
 /*
  * Copyright (C) 2016 The CyanogenMod Project
- * Copyright (C) 2017-2018 The LineageOS Project
+ * Copyright (C) 2017-2019 The LineageOS Project
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
@@ -44,7 +44,6 @@ import com.android.setupwizardlib.util.WizardManagerHelper;
 
 import org.lineageos.setupwizard.util.EnableAccessibilityController;
 
-import lineageos.hardware.LineageHardwareManager;
 import lineageos.providers.LineageSettings;
 
 public class FinishActivity extends BaseSetupWizardActivity {
@@ -211,10 +210,14 @@ public class FinishActivity extends BaseSetupWizardActivity {
     private static void writeDisableNavkeysOption(Context context, boolean enabled) {
         final SharedPreferences prefs = PreferenceManager.getDefaultSharedPreferences(context);
 
-        LineageSettings.System.putIntForUser(context.getContentResolver(),
-                LineageSettings.System.FORCE_SHOW_NAVBAR, enabled ? 1 : 0, UserHandle.USER_CURRENT);
-        LineageHardwareManager hardware = LineageHardwareManager.getInstance(context);
-        hardware.set(LineageHardwareManager.FEATURE_KEY_DISABLE, enabled);
+        final boolean virtualKeysEnabled = LineageSettings.System.getIntForUser(
+                    context.getContentResolver(), LineageSettings.System.FORCE_SHOW_NAVBAR, 0,
+                    UserHandle.USER_CURRENT) != 0;
+        if (enabled != virtualKeysEnabled) {
+            LineageSettings.System.putIntForUser(context.getContentResolver(),
+                    LineageSettings.System.FORCE_SHOW_NAVBAR, enabled ? 1 : 0,
+                    UserHandle.USER_CURRENT);
+        }
 
         /* Save/restore button timeouts to disable them in softkey mode */
         if (enabled) {
