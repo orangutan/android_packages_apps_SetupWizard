@@ -28,7 +28,8 @@
         <result wizard:action="locale" />
     </WizardAction>
     <WizardAction wizard:uri="intent:#Intent;action=org.lineageos.setupwizard.LINEAGE_LOCALE;end" id="locale">
-        <result wizard:action="datetime" />
+	<!-- change from datetime to lockscreen_settings, skipping all in between -->
+        <result wizard:action="lockscreen_settings" />
     </WizardAction>
 
     <WizardAction wizard:uri="intent:#Intent;action=org.lineageos.setupwizard.LINEAGE_DATETIME;end" id="datetime">
