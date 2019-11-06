@@ -18,7 +18,7 @@
 -->
 
 <WizardScript xmlns:wizard="http://schemas.android.com/apk/res/com.google.android.setupwizard"
-    wizard:firstAction="bluetooth_setup">
+    wizard:firstAction="locale">
 
     <WizardAction wizard:uri="intent:#Intent;action=org.lineageos.setupwizard.LINEAGE_BLUETOOTH_SETUP;end" id="bluetooth_setup">
         <result wizard:action="welcome" />
@@ -28,8 +28,7 @@
         <result wizard:action="locale" />
     </WizardAction>
     <WizardAction wizard:uri="intent:#Intent;action=org.lineageos.setupwizard.LINEAGE_LOCALE;end" id="locale">
-	<!-- change from datetime to lockscreen_settings, skipping all in between -->
-        <result wizard:action="lockscreen_settings" />
+        <result wizard:action="exit" />
     </WizardAction>
 
     <WizardAction wizard:uri="intent:#Intent;action=org.lineageos.setupwizard.LINEAGE_DATETIME;end" id="datetime">
